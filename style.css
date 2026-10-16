@@ -1403,7 +1403,7 @@ main > .hero {
 }
 
 .experience-heading {
-  max-width: 760px;
+  max-width: 720px;
   margin-bottom: 30px;
 }
 
@@ -1931,7 +1931,7 @@ main > .hero {
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     align-items: center;
     gap: clamp(24px, 4vw, 44px);
-    padding-top: 3em;
+    padding-top: 1.75em;
     padding-bottom: 2em;
   }
 
@@ -2273,7 +2273,7 @@ main > .hero {
   .hero-layout {
     grid-template-columns: 1fr;
     gap: 38px;
-    padding-top: 56px;
+    padding-top: 28px;
     padding-bottom: 38px;
   }
 
