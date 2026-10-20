@@ -289,7 +289,7 @@ main > .hero {
       rgba(180, 35, 50, 0.10),
       transparent 36%
     ),
-    var(--bg);
+    #0E0E0E;
 }
 
 .hero-glow {
@@ -697,6 +697,7 @@ main > .hero {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
+  margin-top: 48px; 
 }
 
 .about-content .about-features {
@@ -808,7 +809,7 @@ main > .hero {
   gap: 14px;
   padding: 16px 0;
   border-bottom: 1px solid var(--border);
-  transition: padding-left 220ms ease;
+  transition: transform 220ms ease;
 }
 
 .approach-number {
@@ -837,7 +838,7 @@ main > .hero {
 }
 
 .approach-item:hover {
-  padding-left: 5px;
+  transform: translateX(5px);
 }
 
 .approach-item:hover .approach-number {
@@ -1545,7 +1546,7 @@ main > .hero {
 .credential-card {
   display: grid;
   grid-template-columns: 32px minmax(0, 1fr) auto;
-  align-items: center;
+  align-items: start;
   gap: 12px;
   margin-bottom: 10px;
   padding: 17px;
@@ -1586,20 +1587,24 @@ main > .hero {
   line-height: 1.6;
 }
 
+.credential-card div p:first-of-type {
+  color: #C8666F;
+  font-weight: 500;
+}
 /* Learning note */
 .learning-note {
   display: flex;
   align-items: flex-start;
-  gap: 9px;
+  gap: 12px;
   margin-top: 18px;
-  padding: 12px 14px;
+  padding: 14px 16px;
   border: 1px solid rgba(180, 35, 50, 0.22);
   border-radius: 12px;
   background: rgba(180, 35, 50, 0.055);
 }
 
 .experience-column .learning-note {
-  margin-top: auto;
+  margin-top: auto; /* Pushes to bottom on desktop */
   width: 100%;
   box-sizing: border-box;
 }
@@ -1608,18 +1613,17 @@ main > .hero {
   width: 7px;
   height: 7px;
   flex-shrink: 0;
-  margin-top: 6px;
+  margin-top: 5px; /* Aligns perfectly with the first line of text */
   border-radius: 50%;
   background: var(--red-bright);
 }
 
 .learning-note p {
-  margin: 0;
+  margin: 0; /* Removed the 24px that was breaking it */
   color: var(--neutral);
   font-size: 0.78rem;
   line-height: 1.6;
 }
-
 /* Credentials grid + spacing between Education / Certifications */
 .certification-heading {
   margin-top: 28px;
@@ -1706,27 +1710,66 @@ main > .hero {
   font-size: 0.92rem;
   line-height: 1.85;
 }
-
 .contact-email {
   display: inline-flex;
   align-items: center;
   gap: 12px;
   max-width: 100%;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: var(--red);
   color: var(--white);
-  font-size: clamp(0.85rem, 1.5vw, 1.05rem);
-  font-weight: 500;
+  font-size: clamp(0.85rem, 1.4vw, 0.98rem);
+  font-weight: 600;
   text-decoration: none;
   overflow-wrap: anywhere;
+  box-shadow: 0 8px 24px rgba(180, 35, 50, 0.20);
+  transition:
+    background 220ms ease,
+    transform 220ms ease,
+    box-shadow 220ms ease;
 }
 
 .contact-email span {
   flex-shrink: 0;
-  color: var(--red-bright);
+  color: var(--white);
   transition: transform 200ms ease;
+}
+
+.contact-email:hover {
+  background: var(--red-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(180, 35, 50, 0.30);
 }
 
 .contact-email:hover span {
   transform: translate(3px, -3px);
+}
+
+.contact-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 13px 22px;
+  border: 1px solid rgba(247, 245, 242, 0.18);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--white);
+  font-size: clamp(0.85rem, 1.4vw, 0.98rem);
+  font-weight: 600;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition:
+    border-color 220ms ease,
+    background 220ms ease,
+    transform 220ms ease;
+}
+
+.contact-phone:hover {
+  border-color: rgba(247, 245, 242, 0.45);
+  background: rgba(247, 245, 242, 0.05);
+  transform: translateY(-2px);
 }
 
 /* Contact options panel */
@@ -1949,6 +1992,9 @@ main > .hero {
     margin-inline: 0;
     justify-self: center;
     padding-block: 0;
+    /* Use transform to push the whole block down without changing its internal size */
+    transform: translateY(24px);
+    
   }
 
   .portrait-frame {
@@ -1968,7 +2014,7 @@ main > .hero {
 
   .about-layout {
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    align-items: start;
+    align-items: stretch;
     gap: clamp(28px, 4vw, 48px);
   }
 
@@ -1984,7 +2030,9 @@ main > .hero {
   }
 
   .about-content {
-    padding-top: 2.5;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
   }
 
   .about-lead {
@@ -2003,6 +2051,8 @@ main > .hero {
   .about-features {
     grid-template-columns: 1fr;
     gap: 10px;
+    margin-top: auto;
+    padding-top: 32px;
   }
 
   .approach-item {
@@ -2115,6 +2165,9 @@ main > .hero {
     grid-template-columns: 1fr;
     gap: 36px;
   }
+  .experience-column .learning-note {
+    margin-top: 40px; /* Recreates the gap on tablet */
+  }
 
   /* Keep credentials at 2 columns — now they get ~350px each, comfortable */
   .credentials-grid {
@@ -2129,8 +2182,16 @@ main > .hero {
 
   /* Contact */
   .contact-layout {
-    grid-template-columns: 1fr 0.9fr;
-    gap: 28px;
+    grid-template-columns: 1fr; 
+    gap: 32px;
+  }
+  
+  .contact-title {
+    max-width: 700px;
+  }
+  
+  .contact-description {
+    max-width: 560px;
   }
 
   .contact-option {
@@ -2597,6 +2658,9 @@ main > .hero {
     grid-template-columns: 1fr;
     gap: 26px;
   }
+  .experience-column .learning-note {
+    margin-top: 32px; /* Recreates the gap on mobile */
+  }
 
   .experience-column-title {
     margin-bottom: 20px;
@@ -2773,14 +2837,17 @@ main > .hero {
   .approach-item:hover {
     padding-left: 0;
   }
-    /* ============================================================
-     UNIFIED MOBILE TYPOGRAPHY — 3 sizes only
-     Heading  → section titles (already unified above)
+
+
+  /* ============================================================
+     UNIFIED MOBILE TYPOGRAPHY — 4 sizes for better hierarchy
+     Heading   → section titles
      Sub-head  → every h3 and h4
-     Body      → every paragraph
+     Lead      → intro paragraphs under titles
+     Body      → card descriptions and smaller details
   ============================================================ */
 
-  /* Sub-headings — one size */
+  /* 2. Sub-headings — one size */
   .about-card h3,
   .skill-card h3,
   .service-card h3,
@@ -2789,26 +2856,31 @@ main > .hero {
   .approach-item h4,
   .credential-card h4,
   .experience-column-title {
-    font-size: 1.1rem;
+    font-size: 1.15rem; /* Bumped up slightly from 1.1rem */
   }
 
-  /* Body paragraphs — one size */
+  /* 3. Lead / Intro paragraphs — one size */
   .hero-description,
   .about-lead,
   .about-description,
-  .approach-item p,
   .skills-intro,
-  .skill-description,
   .projects-intro,
-  .project-info > p,
   .services-intro,
-  .service-card > p,
   .experience-intro,
+  .contact-description {
+    font-size: 1rem; /* NEW TIER - makes intros stand out */
+    line-height: 1.8;
+  }
+
+  /* 4. Body paragraphs — one size */
+  .approach-item p,
+  .skill-description,
+  .project-info > p,
+  .service-card > p,
   .timeline-description,
   .credential-card p,
-  .about-card p,
-  .contact-description {
-    font-size: 0.88rem;
+  .about-card p {
+    font-size: 0.85rem; /* Dropped slightly from 0.88rem to create contrast */
+    line-height: 1.7;
   }
 }
-
