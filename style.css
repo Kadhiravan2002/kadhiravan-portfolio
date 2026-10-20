@@ -2431,7 +2431,14 @@ main > .hero {
   }
 
   .about-content {
+    
+    display: block;
+  }
+  .about-features {
+    margin-top: 24px; /* Resets the 'auto' stretch and adds a normal gap */
     padding-top: 0;
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .about-lead {
@@ -2449,10 +2456,7 @@ main > .hero {
     margin-block: 22px;
   }
 
-  .about-features {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
+  
 
   .about-card {
     padding: 18px;
